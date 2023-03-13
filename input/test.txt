@@ -1,0 +1,4 @@
+in a;
+in b;
+c = a + b;
+out c;
