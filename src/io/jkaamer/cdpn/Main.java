@@ -5,7 +5,7 @@
  * @author jkaamer
  */
 package io.jkaamer.cdpn;
-//FIG 1.1 :Main.java
+//FIG 1.3 :Main.java
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -16,21 +16,36 @@ public class Main {
 		String codeBase = "#include <iostream>\nusing namespace std;\nint main() {\n";
 		String statement = null;
 		Scanner input = new Scanner(System.in);
-		// Prompt
+		
 		System.out.print("Enter the file path:");
 		String filePath = input.next();
 		input.close();
 		
-		// Link file path to the lexer class
         Lexer lexer = new Lexer(filePath);
         
         try(FileWriter writer = new FileWriter("output/cdpn.txt")) {
+        	
     		writer.write(codeBase);
+    		
         	while (!lexer.isExausthed()) {
-            	
+        		
+        		// TODO inital variables
+        		
+        		String initVar = null;
+            
+        		// for (int i=0; i<lexer.currentLexema().length() ;i++) {
+            	//	initVar = initVar.concat(lexer.currentLexema());
+      			//	lexer.moveAhead();
+            	// }
+        		
             	if (lexer.currentToken() == Token.TK_KEY_IN) {
-    				statement = "cin >>";
+            		statement = "cin >>";
     				lexer.moveAhead();
+            		if (lexer.currentToken() == Token.IDENTIFIER) {
+    					initVar = "int " + lexer.currentLexema() + ";\n";	
+    					writer.append(initVar);
+    				}
+    				
     			}else if (lexer.currentToken() == Token.TK_KEY_OUT) {
     				statement = "cout <<";
     				lexer.moveAhead();
@@ -44,14 +59,14 @@ public class Main {
             	writer.append(statement);
             }
         	
-        	writer.append("\nreturn 0;\n}");
+        	writer.append("return 0;\n}");
 
     	}catch (IOException e) {
 			e.printStackTrace();
 		}
 
         if (lexer.isSuccessful()) {
-            System.out.println("Successfull! :D");
+            System.out.println("Successfull!\nCopyright 2023 JKAAMER\n:D");
         } else {
             System.out.println(lexer.errorMessage());
         }
