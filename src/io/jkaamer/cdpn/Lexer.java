@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 public class Lexer {
+	
     private StringBuilder input = new StringBuilder();
     private Token token;
     private String lexema;
@@ -22,6 +23,7 @@ public class Lexer {
     private Set<Character> blankChars = new HashSet<Character>();
 
     public Lexer(String filePath) {
+    	
         try (Stream<String> st = Files.lines(Paths.get(filePath))) {
             st.forEach(input::append);
         } catch (IOException ex) {
@@ -77,6 +79,7 @@ public class Lexer {
     }
 
     private boolean findNextToken() {
+    	
         for (Token t : Token.values()) {
             int end = t.endOfMatch(input.toString());
 
