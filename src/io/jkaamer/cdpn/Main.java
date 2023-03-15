@@ -5,12 +5,20 @@
  * @author jkaamer
  */
 package io.jkaamer.cdpn;
-//FIG 1.3 :Main.java
+//FIG 1.5 :Main.java
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
+	
+	private static List<String> statementList = new ArrayList<>();
+	private static Set<String> varSet = new HashSet<>();
+	
 	public static void main(String[] args) {
 		
 		String codeBase = "#include <iostream>\nusing namespace std;\nint main() {\n";
@@ -28,10 +36,6 @@ public class Main {
     		writer.write(codeBase);
     		
         	while (!lexer.isExausthed()) {
-        		
-        		// TODO inital variables
-        		
-        		String initVar = null;
             
         		// for (int i=0; i<lexer.currentLexema().length() ;i++) {
             	//	initVar = initVar.concat(lexer.currentLexema());
@@ -42,13 +46,15 @@ public class Main {
             		statement = "cin >>";
     				lexer.moveAhead();
             		if (lexer.currentToken() == Token.IDENTIFIER) {
-    					initVar = "int " + lexer.currentLexema() + ";\n";	
-    					writer.append(initVar);
+    					varSet.add(lexer.currentLexema());
     				}
     				
     			}else if (lexer.currentToken() == Token.TK_KEY_OUT) {
     				statement = "cout <<";
     				lexer.moveAhead();
+    				if (lexer.currentToken() == Token.IDENTIFIER) {
+    					varSet.add(lexer.currentLexema());
+    				}
     			}else if (lexer.currentToken() == Token.TK_SEMI) {
     				statement = ";\n";
     				lexer.moveAhead();
@@ -56,9 +62,17 @@ public class Main {
     				statement = lexer.currentLexema();
     				lexer.moveAhead();
     			}
-            	writer.append(statement);
+            	statementList.add(statement);
+            	//writer.append(statement);
             }
         	
+        	for (String v : varSet) {
+				writer.append("int " + v + ";\n");
+			}
+        	
+        	for (String s : statementList) {
+				writer.append(s);
+			}
         	writer.append("return 0;\n}");
 
     	}catch (IOException e) {
