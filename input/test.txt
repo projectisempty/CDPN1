@@ -1,4 +1,4 @@
-in a;
-in b;
-c = a + b;
-out c;
+in number1;
+in number2;
+sum = number1 + number2;
+out sum;
