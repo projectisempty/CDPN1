@@ -1,11 +1,12 @@
 #include <iostream>
 using namespace std;
 int main() {
-int a;
-cin >>a;
-int b;
-cin >>b;
-c=a+b;
-cout <<c;
+int number1;
+int sum;
+int number2;
+cin >>number1;
+cin >>number2;
+sum=number1+number2;
+cout <<sum;
 return 0;
 }
