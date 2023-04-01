@@ -1,7 +1,7 @@
 # CDPN1
 پروژه درس اصول طراحی کامپایلر
 
-## Introduction to Compiler
+## About Compiler
 
 * A compiler is a translator that converts the high-level language into the machine language.
 - High-level language is written by a developer and machine language can be understood by the processor.
@@ -17,17 +17,19 @@ and produces output in another representation. Each phase takes input from its p
 - Syntax analyzer 
 + Semantic analyzer 
 
-#### Lexical analyzer
+### Lexical analyzer
 Lexical analyzer phase is the first phase of compilation process. It takes source code as input. It reads the source program 
 one character at a time and converts it into meaningful lexemes. Lexical analyzer represents these lexemes in the form of tokens.
 
-#### Syntax analyzer
+### Syntax analyzer
 Syntax analysis is the second phase of compilation process. It takes tokens as input and generates a parse tree as output. 
 In syntax analysis phase, the parser checks that the expression made by the tokens is syntactically correct or not.
 
-#### Semantic analyzer
+### Semantic analyzer
 Semantic analysis is the third phase of compilation process. It checks whether the parse tree follows the rules of language. 
 Semantic analyzer keeps track of identifiers, their types and expressions. The output of semantic analysis phase is the annotated tree syntax.
+
+***
 
 ## What will this compiler do?
 This program will act as a compiler and will read a text file that contains commands and code, then convert it to C++ and put it in another text file.
@@ -55,7 +57,7 @@ This compiler will compile the code of anlanguage that does not exist externally
 | Remaining        | %             |
 | assignment       | =             |
  
-#### Example of code
+### Example of code
 If the following code is placed in the input text file of the compiler, 
 it must create and save the output file that contains the second code. 
 
@@ -80,18 +82,9 @@ cout <<c;
 return 0;
 }
 ```
+
 ***
-[projectisempty/CDPN1](https://github.com/projectisempty/CDPN1) is licensed under the
-**Apache License 2.0**
-A permissive license whose main conditions require preservation of copyright and license notices. 
-Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed 
-under different terms and without source code. 
-<br/>
-Author: Mahdi Hosein Zade 
-<br/>
-Copyright 2023 jkaamer. 
-<br/>
-Copyright 2023 projectisempty. 
-<br/>
-All rights reserved. 
-:last_quarter_moon:
+
+## License
+
+The CDPN1 is open-sourced software licensed under the [Apache license](https://www.apache.org/licenses/LICENSE-2.0).
