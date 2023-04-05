@@ -1,0 +1,4 @@
+in y;
+in x;
+sum = y + x;
+out sum;
