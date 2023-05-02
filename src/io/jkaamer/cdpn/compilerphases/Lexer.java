@@ -1,11 +1,6 @@
-/**
- * Copyright 2023 Jkaamer ,All Rights Reserved.
- *
- *
- * @author jkaamer
- */
-package io.jkaamer.cdpn;
-//FIG 1.1 :Lexer.java
+package io.jkaamer.cdpn.compilerphases;
+//FIG 1.4 :Lexer.java
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -14,16 +9,17 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 public class Lexer {
-	
+
     private StringBuilder input = new StringBuilder();
     private Token token;
     private String lexema;
     private boolean exausthed = false;
+
     private String errorMessage = "";
-    private Set<Character> blankChars = new HashSet<Character>();
+    private Set<Character> blankChars = new HashSet<Character>(); // A set for white spaces
 
     public Lexer(String filePath) {
-    	
+
         try (Stream<String> st = Files.lines(Paths.get(filePath))) {
             st.forEach(input::append);
         } catch (IOException ex) {
@@ -43,6 +39,7 @@ public class Lexer {
         moveAhead();
     }
 
+    // Move to next token
     public void moveAhead() {
         if (exausthed) {
             return;
@@ -79,7 +76,7 @@ public class Lexer {
     }
 
     private boolean findNextToken() {
-    	
+
         for (Token t : Token.values()) {
             int end = t.endOfMatch(input.toString());
 
@@ -113,4 +110,5 @@ public class Lexer {
     public boolean isExausthed() {
         return exausthed;
     }
+
 }
