@@ -3,10 +3,17 @@ using namespace std;
 int main() {
 int x;
 int y;
+int z;
 int sum;
 cin >>y;
 cin >>x;
-sum=y+x;
+cin >>z;
+z = 4;
+x = 6;
+y = 0;
+sum = y + x;
+sum = 9;
+x = sum * 10;
 cout <<sum;
 return 0;
 }
