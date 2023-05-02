@@ -1,5 +1,10 @@
 package io.jkaamer.cdpn;
 //FIG 1.5 :Main.java
+/**
+ * @author Jkaamer
+ * @version 1.6.2
+ * @since March, 2023
+ */
 
 import io.jkaamer.cdpn.compilerphases.Lexer;
 import io.jkaamer.cdpn.compilerphases.Token;
@@ -22,13 +27,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String codeBase = "#include <iostream>\nusing namespace std;\nint main() {\n";
+        String codeBase = "#include <iostream>\nusing namespace std;\nint main() {\n"; // base code in c++
         String statement = ""; // A String without initialize to save statements
         input = new Scanner(System.in);
 
-        // Obtain the input file path
-        System.out.print("Enter the file path:");
+        // Obtain the input file path and output file path
+        System.out.printf("%s%n%s", "CDPN1 A SIMPLE COMPILER BY JKAAMER.", "Enter file path (input):");
         String filePath = input.next();
+        // set output file path to save compiled program
+        String outPath = filePath.substring(0, filePath.lastIndexOf("/") + 1) + "output.txt";
+        input.close();
 
         try {
             checkSyntax(filePath);
@@ -36,12 +44,12 @@ public class Main {
             System.out.println(e);
             System.exit(1);
         }
-        input.close();
+
 
         Lexer lexer = new Lexer(filePath);
         List<String> arr = new ArrayList<>();
 
-        try (FileWriter writer = new FileWriter("userIO/output/cdpn.txt")) {
+        try (FileWriter writer = new FileWriter(outPath)) {
 
             statementList = new ArrayList<>();
             varSet = new HashSet<>();
@@ -132,10 +140,10 @@ public class Main {
         }
 
         if (lexer.isSuccessful()) {
-            System.out.println("Successful!");
+            System.out.println("Successful!\nVersion 1.6.2");
             Desktop desktop = Desktop.getDesktop();
             try {
-                desktop.open(new File("userIO/output/cdpn.txt"));
+                desktop.open(new File(outPath));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
