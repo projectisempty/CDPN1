@@ -39,6 +39,7 @@ public class Lexer {
         moveAhead();
     }
 
+    // Move to next token
     public void moveAhead() {
         if (exausthed) {
             return;
