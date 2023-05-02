@@ -10,7 +10,6 @@ cin >>x;
 cin >>z;
 z = 4;
 x = 6;
-y = 0;
 sum = y + x;
 sum = 9;
 x = sum * 10;
