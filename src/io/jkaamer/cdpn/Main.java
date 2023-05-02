@@ -5,10 +5,12 @@ import io.jkaamer.cdpn.compilerphases.Lexer;
 import io.jkaamer.cdpn.compilerphases.Token;
 import io.jkaamer.cdpn.exeptions.SyntaxException;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 import java.util.*;
 
 public class Main {
@@ -116,6 +118,7 @@ public class Main {
                  */
                 statementList.add(statement);
             }
+            // Write to output file
             for (String v : varSet) {
                 writer.append("int " + v + ";\n");
             }
@@ -130,12 +133,19 @@ public class Main {
 
         if (lexer.isSuccessful()) {
             System.out.println("Successful!");
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                desktop.open(new File("userIO/output/cdpn.txt"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         } else {
             System.out.println(lexer.errorMessage());
         }
 
     }
 
+    // Check semi is excepted or not
     private static void checkSyntax(String path) throws FileNotFoundException, SyntaxException {
 
         file = new File(path);
