@@ -1,5 +1,6 @@
 package io.jkaamer.cdpn.compilerphases;
 //FIG 1.0 :Automaton.java
+// UNFINISHED WORK!
 
 import java.util.HashMap;
 import java.util.Map;
@@ -65,11 +66,4 @@ public class Automaton {
         }
     }
 
-//    public Token evaluate(String str){
-//        State state = State.INITIAL;
-//        for(char c : str.toCharArray()){
-//            state = executeTransition(state, c);
-//        }
-//        return finalStates.getOrDefault(state, Token.INVALID);
-//    }
 }

@@ -1,7 +1,9 @@
 package io.jkaamer.cdpn.compilerphases;
 //FIG 1.0 :State.java
+// UNFINISHED WORK!
 
 public enum State {
+    // TODO Unfinished work must be finished: 2
     /*
     Q1 -> IDENTIFIER,
     Q3 -> STRING,
