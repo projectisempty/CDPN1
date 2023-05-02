@@ -16,16 +16,9 @@ public class Lexer {
     private boolean exausthed = false;
 
     private String errorMessage = "";
-    private Set<Character> blankChars = new HashSet<Character>();
+    private Set<Character> blankChars = new HashSet<Character>(); // A set for white spaces
 
     public Lexer(String filePath) {
-//        Scanner s = new Scanner(filePath);
-//        while (s.hasNextLine()) {
-//            String line = s.nextLine();
-//            if (!line.endsWith(";")) {
-//                throw new ExceptedQuantities("\";\" excepted.");
-//            }
-//        }
 
         try (Stream<String> st = Files.lines(Paths.get(filePath))) {
             st.forEach(input::append);
