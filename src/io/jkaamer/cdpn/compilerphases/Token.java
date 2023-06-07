@@ -1,5 +1,4 @@
 package io.jkaamer.cdpn.compilerphases;
-// FIG 1.4 :Token.java
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
