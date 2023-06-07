@@ -1,5 +1,4 @@
 package io.jkaamer.cdpn.compilerphases;
-//FIG 1.4 :Lexer.java
 
 import java.io.IOException;
 import java.nio.file.Files;
