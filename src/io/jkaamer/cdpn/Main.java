@@ -58,6 +58,14 @@ public class Main {
                         statement = " = ";
                         lexer.moveAhead();
                         break;
+                    case TK_PL:
+                        statement = " ( ";
+                        lexer.moveAhead();
+                        break;
+                    case TK_PR:
+                        statement = " ) ";
+                        lexer.moveAhead();
+                        break;
                     case TK_PLUS:
                         statement = " + ";
                         lexer.moveAhead();
