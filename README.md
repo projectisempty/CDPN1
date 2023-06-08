@@ -1,65 +1,44 @@
 # CDPN1
+
 پروژه درس اصول طراحی کامپایلر
 
 ## About Compiler
 
-* A compiler is a translator that converts the high-level language into the machine language.
-- High-level language is written by a developer and machine language can be understood by the processor.
-+ Compiler is used to show errors to the programmer.
-* The main purpose of compiler is to change the code written in one language without changing the meaning of the program.
+A compiler is a special program that translates a programming language's source code into machine code, bytecode or another programming language.
 
 ## Compiler Phases
 
 The compilation process contains the sequence of various phases. Each phase takes source program in one representation 
 and produces output in another representation. Each phase takes input from its previous stage. 
 
-* Lexical analyzer 
-- Syntax analyzer 
-+ Semantic analyzer 
+[phases of complier](https://byjus.com/gate/phases-of-complier-notes/).
 
-### Lexical analyzer
-Lexical analyzer phase is the first phase of compilation process. It takes source code as input. It reads the source program 
-one character at a time and converts it into meaningful lexemes. Lexical analyzer represents these lexemes in the form of tokens.
+## What will this program do?
 
-### Syntax analyzer
-Syntax analysis is the second phase of compilation process. It takes tokens as input and generates a parse tree as output. 
-In syntax analysis phase, the parser checks that the expression made by the tokens is syntactically correct or not.
+The goal of this project is to build a simple compiler for a new and fictional language.
+To produce a new language, you can take help from existing languages.
 
-### Semantic analyzer
-Semantic analysis is the third phase of compilation process. It checks whether the parse tree follows the rules of language. 
-Semantic analyzer keeps track of identifiers, their types and expressions. The output of semantic analysis phase is the annotated tree syntax.
+Consider a simple language with the following structure:
+In these statements, operator is one of the operators + - * / and operand is an identifier or number, and num is an integer.
 
-***
+<blockquote><pre>
+     operand = num;
+     operand = operand operator operand;
+</pre></blockquote>
 
-## What will this compiler do?
-This program will act as a compiler and will read a text file that contains commands and code, then convert it to C++ and put it in another text file.
+Also, the in command reads a number from the user and puts it in the variable. The out command displays the value of a variable.
+The structure of these commands is as follows:
 
-What commands does this source code include? 
-What will each command do?
+<blockquote><pre>
+    in operand;
+    out operand;
+</pre></blockquote><p>
 
-This compiler will compile the code of anlanguage that does not exist externally, which is very small and simple
+This program reads expressions with the above structure from a file and translates them into c++ language and puts them in a file.
  
-**KEYWORDS** 
+### Example
 
-| _                | Keyword       |
-| ---------------- |:-------------:|
-| 1                | in            |
-| 2                | out           |
- 
-**OPERATIONS** 
-
-| Operation        | Mark          |
-| ---------------- |:-------------:|
-| Addition         | -             |
-| Subtraction      | +             |
-| multiplication   | *             |
-| division         | /             |
-| Remaining        | %             |
-| assignment       | =             |
- 
-### Example of code
-If the following code is placed in the input text file of the compiler, 
-it must create and save the output file that contains the second code. 
+the following code is placed in the input text file of the compiler
 
 ```
 in a;
@@ -67,6 +46,8 @@ in b;
 c = a + b;
 out c;
 ```
+
+translates them into c++ language.
 
 ```C++
 #include <iostream>
@@ -82,8 +63,6 @@ cout <<c;
 return 0;
 }
 ```
-
-***
 
 ## License
 
