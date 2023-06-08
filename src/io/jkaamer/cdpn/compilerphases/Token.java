@@ -13,6 +13,8 @@ public enum Token {
     TK_SEMI(";"),
     TK_KEY_IN("in"),
     TK_KEY_OUT("out"),
+    TK_PL("\\("),
+    TK_PR("\\)"),
 
     REAL("(\\d*)\\.\\d+"),
     STRING("\"[^\"]+\""),
