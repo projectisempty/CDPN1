@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
-public class Lexer {
+public final class Lexer implements Lexeme {
 
     private StringBuilder input = new StringBuilder();
     private Token token;
@@ -90,22 +90,27 @@ public class Lexer {
         return false;
     }
 
+    @Override
     public Token currentToken() {
         return token;
     }
 
+    @Override
     public String currentLexema() {
         return lexema;
     }
 
+    @Override
     public boolean isSuccessful() {
         return errorMessage.isEmpty();
     }
 
+    @Override
     public String errorMessage() {
         return errorMessage;
     }
 
+    @Override
     public boolean isExausthed() {
         return exausthed;
     }
