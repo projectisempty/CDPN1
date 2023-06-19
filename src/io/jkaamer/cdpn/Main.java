@@ -10,6 +10,17 @@ import java.io.IOException;
 import java.util.List;
 import java.util.*;
 
+/**
+ * Main.java
+ * This compiler is a tool that translates a program from one (fictional) language to C++ language.
+ *
+ * @author JKaamer
+ * @version 1.7.0
+ * @see io.jkaamer.cdpn.compilerphases.Lexer
+ * @see io.jkaamer.cdpn.compilerphases.Token
+ * @see java.io.File
+ * @see java.io.FileWriter
+ */
 public class Main {
 
     public static void main(String[] args) {
@@ -28,7 +39,7 @@ public class Main {
         String outPath = filePath.substring(0, filePath.lastIndexOf("/") + 1) + "output.txt";
         input.close();
 
-        Lexer lexer = new Lexer(filePath);
+        Lexer lexer = new Lexer(filePath); // Initial a lexer object
 
         try (FileWriter writer = new FileWriter(outPath)) {
             statementList = new ArrayList<>();
