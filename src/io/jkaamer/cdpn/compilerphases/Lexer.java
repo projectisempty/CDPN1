@@ -7,7 +7,18 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
-public final class Lexer implements Lexeme {
+/**
+ * Lexer.java
+ * A lexeme is a sequence of characters in the source program that matches the pattern for a token and is identified
+ * by the lexical analyzer as an instance of that token.
+ *
+ * @see io.jkaamer.cdpn.compilerphases.Token
+ * @see java.nio.file.Files
+ * @see java.util.stream.Stream
+ * @see java.lang.StringBuilder
+ */
+
+public final class Lexer {
 
     private StringBuilder input = new StringBuilder();
     private Token token;
@@ -17,6 +28,14 @@ public final class Lexer implements Lexeme {
     private String errorMessage = "";
     private Set<Character> blankChars = new HashSet<Character>(); // A set for white spaces
 
+    /**
+     * Lexer constructor
+     * It's receive a string path for initialize
+     *
+     * @param filePath A path string
+     * @throws java.nio.file.InvalidPathException
+     * @throws IOException
+     */
     public Lexer(String filePath) {
 
         try (Stream<String> st = Files.lines(Paths.get(filePath))) {
@@ -38,7 +57,14 @@ public final class Lexer implements Lexeme {
         moveAhead();
     }
 
-    // Move to next token
+    /**
+     * moveAhead
+     * <p>
+     * {@link #exausthed}
+     * {@link #ignoreWhiteSpaces()}
+     * {@link #findNextToken()}
+     * {@link #errorMessage}
+     */
     public void moveAhead() {
         if (exausthed) {
             return;
@@ -62,6 +88,10 @@ public final class Lexer implements Lexeme {
         }
     }
 
+    /**
+     * ignoreWhiteSpaces
+     * Delete {@link #blankChars} for ignore them in compile
+     */
     private void ignoreWhiteSpaces() {
         int charsToDelete = 0;
 
@@ -74,6 +104,12 @@ public final class Lexer implements Lexeme {
         }
     }
 
+    /**
+     * findNextToken
+     *
+     * @return {@code true} if local variable end is {@code -1}, otherwise
+     * {@code false}
+     */
     private boolean findNextToken() {
 
         for (Token t : Token.values()) {
@@ -90,27 +126,49 @@ public final class Lexer implements Lexeme {
         return false;
     }
 
-    @Override
+    /**
+     * currentToken
+     *
+     * @return {@link #token}
+     */
     public Token currentToken() {
         return token;
     }
 
-    @Override
+    /**
+     * currentLexema
+     *
+     * @return {@link #lexema}
+     */
     public String currentLexema() {
         return lexema;
     }
 
-    @Override
+    /**
+     * isSuccessful
+     * Checks that errorMessage is empty or not
+     *
+     * @return {@code true} if {@link #errorMessage} is {@code 0}, otherwise
+     * {@code false}
+     */
     public boolean isSuccessful() {
         return errorMessage.isEmpty();
     }
 
-    @Override
+    /**
+     * errorMessage
+     *
+     * @return {@link #errorMessage}
+     */
     public String errorMessage() {
         return errorMessage;
     }
 
-    @Override
+    /**
+     * isExausthed
+     *
+     * @return {@link #exausthed}
+     */
     public boolean isExausthed() {
         return exausthed;
     }
