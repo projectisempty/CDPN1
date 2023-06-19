@@ -9,7 +9,7 @@ int number_6;
 cin >>number_1;
 cin >>number_2;
 x = 6 + number_1 *  ( number_2 + 6 ) ;
-sum = x;
+sum = x + 2;
 cin >>number_6;
 sum = number_6;
 x =  (  ( number_6 * 10 )  + number_2 )  / 4;
